@@ -21,9 +21,10 @@ var fns = [];
 function run(fn, times, cb) {
     var start = Date.now();
 
-    while (--times >= 0) {
+    var called = 0;
+    for (var i = 0; i < times; i++) {
         fn(function() {
-            if (times == 0) {
+            if (++called == times) {
                 var takenMs = Date.now() - start;
                 cb(takenMs);
             }

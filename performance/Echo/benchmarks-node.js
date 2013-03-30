@@ -1,6 +1,8 @@
 var edge = require('edge');
 var http = require('http');
 
+/** NOT DONE: TODO add benchmarks for marshalling node / express via edge **/
+
 var netProxy = edge.func('Echo/bin/Release/Echo.dll');
 
 var express = require('express');

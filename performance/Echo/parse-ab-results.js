@@ -107,7 +107,8 @@ fs.writeFileSync(resultsDir + "/" + "raw-results.json", JSON.stringify(results))
 
 var allStats = {
     node: {},
-    edge: {}
+    edge: {},
+    servicestack: {}
 };
 
 results.forEach(function(result) {
@@ -143,6 +144,7 @@ function addToSeries(name, allSeries) {
 var allSeries = [];
 addToSeries('node', allSeries);
 addToSeries('edge', allSeries);
+addToSeries('servicestack', allSeries);
 
 fs.writeFileSync("charts/" + dateLabel + "-echo-benchmarks.json", JSON.stringify(allSeries));
 

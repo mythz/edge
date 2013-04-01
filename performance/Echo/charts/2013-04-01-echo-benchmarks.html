@@ -1,0 +1,48 @@
+<html><head><title>2013-04-01 edge vs node.js performance</title></head>
+<body>
+<script src="jquery-1.7.js"></script>
+<script src="highcharts.js"></script>
+<script src="exporting.js"></script>
+<div id="container" style="min-width: 800px; height: 800px; margin: 0 auto"></div>
+<script type="text/javascript">
+    var series = [{"name":"node 1 threads","data":[4.138,4.14,4.342,4.652,6.214,9.626]},{"name":"node 100 threads","data":[2.354,2.444,2.733,2.963,4.891,7.954]},{"name":"edge 1 threads","data":[4.37,4.697,5.265,7.489,13.74,33.667]},{"name":"edge 100 threads","data":[2.615,3.165,3.841,6.045,11.856,29.569]},{"name":"servicestack 1 threads","data":[4.2,3.91,4.524,3.755,7.673,3.711]},{"name":"servicestack 100 threads","data":[2.442,1.519,2.583,1.658,5.593,2.103]}];
+    $(function () {
+        $("#container").highcharts({
+            chart: {
+                type: "line"
+            },
+            title: {
+                text: "node vs edge perf passing Nortwhind Customer rows"
+            },
+            subtitle: {
+                text: "10k iterations"
+            },
+            xAxis: {
+                categories: ["1 text row", "1 json row", "10 text rows", "10 json rows", "100 text rows", "100 json rows"]
+            },
+            yAxis: {
+                title: {
+                    text: "Total Time Taken (ms)"
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: "#808080"
+                }]
+            },
+            tooltip: {
+                valueSuffix: "ms"
+            },
+            legend: {
+                layout: "vertical",
+                align: "right",
+                verticalAlign: "top",
+                y: 100,
+                borderWidth: 0
+            },
+            series: series
+        });
+    });
+</script>
+</body>
+</html>

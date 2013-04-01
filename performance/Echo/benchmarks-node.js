@@ -41,7 +41,7 @@ function sendTo(invoke) {
             readBody(req, res, function (body) {
                 var asJson = req.url.indexOf("json") >= 0;
                 var verbose = req.url.indexOf("verbose") >= 0;
-                var data = asJson ? body : JSON.parse(body);
+                var data = asJson ? JSON.parse(body) : body;
 
                 invoke(data, function (err, result) {
                     var safeResult = (result || ""),

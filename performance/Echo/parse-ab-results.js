@@ -144,7 +144,7 @@ var allSeries = [];
 addToSeries('node', allSeries);
 addToSeries('edge', allSeries);
 
-fs.writeFileSync("charts/highchart-" + dateLabel + ".json", JSON.stringify(allSeries));
+fs.writeFileSync("charts/" + dateLabel + "-echo-benchmarks.json", JSON.stringify(allSeries));
 
 var html = ['<html><head><title>' + dateLabel + ' edge vs node.js performance</title></head>',
     '<body>',
@@ -195,4 +195,4 @@ var html = ['<html><head><title>' + dateLabel + ' edge vs node.js performance</t
     '</body>',
     '</html>'];
 
-fs.writeFileSync("charts/highchart-" + dateLabel + ".html", html.join('\n'));
+fs.writeFileSync("charts/" + dateLabel + "-echo-benchmarks.html", html.join('\n'));

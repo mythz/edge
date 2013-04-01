@@ -45,9 +45,16 @@
   <ItemGroup>
     <Content Include="benchmarks-node.js" />
     <Content Include="benchmarks-direct.js" />
+    <Content Include="charts\exporting.js" />
+    <Content Include="charts\jquery-1.7.js" />
+    <Content Include="charts\highcharts.js" />
+    <Content Include="parse-ab-results.js" />
     <Content Include="row-1.txt" />
     <Content Include="row-10.txt" />
     <Content Include="row-100.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ab-benchmarks-node-10k.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

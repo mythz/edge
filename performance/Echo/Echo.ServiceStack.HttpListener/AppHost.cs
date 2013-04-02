@@ -11,7 +11,7 @@ namespace Echo.ServiceStack.HttpListener
     public class AppHost : AppHostHttpListenerBase
     {
         public AppHost() : base("ServiceStack HttpListener Benchmarks", typeof(AppHost).Assembly) { }
-        public override void Configure(Container container) {}
+        public override void Configure(Container container) { }
     }
 
     public static class Program
@@ -45,19 +45,19 @@ namespace Echo.ServiceStack.HttpListener
     {
         static int counter;
 
-        public Response Any(RawRequest request)
+        public string Any(RawRequest request)
         {
             using (var sr = new StreamReader(request.RequestStream))
             {
                 var body = sr.ReadToEnd();
 
-                return new Response { Result = counter++ + ": char length: " + body.Length };
+                return body;
             }
         }
 
-        public Response Any(Request request)
+        public List<Customer> Any(Request request)
         {
-            return new Response { Result = counter++ + ": row count: " + request.Count };
+            return request.ConvertAll(x => x.Copy());
         }
     }
 
@@ -75,5 +75,24 @@ namespace Echo.ServiceStack.HttpListener
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
+
+        public Customer Copy()
+        {
+            return new Customer
+            {
+                Id = Id,
+                CompanyName = CompanyName,
+                ContactName = ContactName,
+                ContactTitle = ContactTitle,
+                Address = Address,
+                City = City,
+                Region = Region,
+                PostalCode = PostalCode,
+                Country = Country,
+                Phone = Phone,
+                Fax = Fax,
+                Email = Email,
+            };
+        }
     }
 }

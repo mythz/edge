@@ -49,7 +49,7 @@ function bench(jsonFn, objectFn, msg, cb) {
             console.log("jsonStringToType: " + jsonTakenMs + "ms");
             console.log("jsToObjectToType: " + objectTakenMs + "ms");
             console.log((objectTakenMs > jsonTakenMs ? "jsToObjectToType" : "jsonStringToType") + " is " +
-                Math.round(Math.max(jsonTakenMs, objectTakenMs) / Math.min(jsonTakenMs, objectTakenMs), 3) + "x slower\n");
+                Math.round(Math.max(jsonTakenMs, objectTakenMs) / Math.min(jsonTakenMs, objectTakenMs) * 1000) / 1000 + "x slower\n");
             cb();
         });
     });
